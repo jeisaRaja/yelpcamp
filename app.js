@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
 console.log(process.env.CLOUDINARY_SECRET)
 
 const dbURL = process.env.DB_URL
