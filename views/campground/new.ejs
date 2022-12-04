@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %> 
+    
+    <div class="row">
+        <h1 class="text-center mb-3">Create New Campground</h1>
+        <div class="col-6 offset-3">
+            <form method="post" action="/campground" novalidate class="validate_form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title" class="mb-1 mt-2">Name</label>
+                    <input type="text" class="form-control" id="title" placeholder="The Cold Camp" name="campground[title]" required>
+                </div>
+                <div class="form-group">
+                  <label for="location" class="mb-1 mt-2">Location</label>
+                  <input type="text" class="form-control" id="location" placeholder="Texas, USA" name="campground[location]" required>
+                </div>
+                <div class="col-auto">
+                    <label class="sr-only mb-1 mt-2" for="price">Price</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                      </div>
+                      <input type="number" class="form-control" id="price" placeholder="0.00" name="campground[price]" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image" class="mb-1 mt-2">Images</label>
+                    <input type="file" class="form-control" id="Image" placeholder="https://image.com" name="images" multiple required>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="mb-1 mt-2">Description</label>
+                    <textarea class="form-control" id="description" placeholder="Feel the adventure" name="campground[description]" required></textarea>
+                </div>
+
+
+                  <button type="submit" class="btn btn-success mt-4 col-12">Create</button>
+              </form>
+
+
+        </div>
+    </div>
+
