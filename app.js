@@ -1,7 +1,3 @@
-if(process.env.NODE_ENV !== 'production'){
-    require('dotenv').config()
-}
-
 console.log(process.env.CLOUDINARY_SECRET)
 
 const dbURL = process.env.DB_URL
@@ -122,6 +118,6 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render('error' , {message,statusCode})
 })
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log('Serving the localhost')
 })
