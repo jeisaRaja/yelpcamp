@@ -44,7 +44,10 @@ module.exports.login =  (req,res)=>{
     res.redirect(returnTo)
 }
 
-module.exports.logout = (req,res)=>{
-    req.logOut();
+module.exports.logout = (req,res,next)=>{
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
     res.redirect('/login')
 }
