@@ -122,6 +122,6 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render('error' , {message,statusCode})
 })
 
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT || 3000, ()=>{
     console.log('Serving the localhost')
 })
