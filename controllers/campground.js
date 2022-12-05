@@ -3,9 +3,12 @@ const {cloudinary} = require('../cloudinary')
 
 
 module.exports.index = async(req,res)=>{
-
-    const campground = await Campground.find({})
-    res.render('./campground/index' , {campground})
+    const currPage = req.query.page || 1
+    const count = await Campground.countDocuments()
+    const campground = await Campground.find().skip((currPage-1)*10).limit(10)
+    const totalPage = Math.ceil(count/10)
+    console.log(currPage)
+    res.render('./campground/index' , {campground,totalPage, currPage})
 }
 
 module.exports.renderNewForm = async(req,res)=>{
