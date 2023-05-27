@@ -4,8 +4,9 @@ const {cloudinary} = require('../cloudinary')
 
 module.exports.index = async(req,res)=>{
     const currPage = req.query.page || 1
+    const searchTerm = req.query.search || null
     const count = await Campground.countDocuments()
-    const campground = await Campground.find().skip((currPage-1)*10).limit(10)
+    const campground = await Campground.find({searchTerm}).skip((currPage-1)*10).limit(10)
     const totalPage = Math.ceil(count/10)
     console.log(currPage)
     res.render('./campground/index' , {campground,totalPage, currPage})
