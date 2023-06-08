@@ -14,7 +14,7 @@ A simple clone of yelp for camping enthusiast. Find and share your new favorite 
 
 ## Tech Stack
 
-**Client:** HTML, Bootsrap, JavaScript, EJS
+**Client:** Bootsrap, JavaScript, EJS
 
 **Server:** Node, Express, MongoDB
 
