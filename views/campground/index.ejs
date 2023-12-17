@@ -1,19 +1,25 @@
-<% layout('layouts/boilerplate') %> 
+<% layout('layouts/boilerplate') %>
     <h1>Campgrounds</h1>
+    <hr class="">
+    <% if(currUser){ %>
+        <a class="nav-link btn btn-dark text-white col-md-2 mb-4" href="/campground/new">Add new camp</a>
+    <% } %>
     <link rel="stylesheet" href="/stylesheet/star.css">  
-
+    <% if(searchTerm){ %>
+        <div class="mb-2">results for "<%= searchTerm  %>"</div>
+    <% } else { %>
+    <% } %>
     <% for(let camp of campground){ %>
-        <div class="card mb-3">
+        <div class="card mb-3 campCard">
             <div class="row">
                 <div class="col-md-4">
                     <img alt="image" class="img-fluid" src="<%=camp.images[0].m_thumbnail%>">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body text-truncate-container">
+                    <div class="card-body">
                         <h5><%= camp.title %> </h5>
-                        <p class="card-text"><%= camp.description %> </p>
-                        <p class="card-text">
-                            <small class="muted-text"><%= camp.location %></small>
+                        <p class="truncate-overflow card-text"><%= camp.description %></p>
+                        <small class="muted-text"><%= camp.location %></small>
                         </p>
                         <a href="campground/<%= camp._id %>" class="btn btn-light">View</a>
                     </div>
@@ -31,7 +37,7 @@
             <% } else { %>
             <%  status ="" %>
             <% } %>
-            <li class="page-item <%=status%> "><a class="page-link" href="campground?page=<%=i%>"><%= i %> </a></li>
+            <li class="page-item <%=status%>"><a class="page-link" href="campground?page=<%=i%>&s=<%=searchTerm%>"><%= i %> </a></li>
         <% } %>
     </ul>
 </nav>

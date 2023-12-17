@@ -5,7 +5,7 @@ const User = require('../models/userModel')
 const { route } = require('./review_routes')
 const passport = require('passport')
 const user = require('../controllers/user.js')
-
+const middleware = require('../middleware.js')
 
 router.route('/register').get(user.registerForm)
 .post(asyncCatch(user.register))
@@ -15,16 +15,8 @@ router.route('/login').get(user.loginForm)
 
 router.get('/login', user.loginForm)
 
+router.get('/profile', middleware.isLogin, user.profile)
 
 router.get('/logout', user.logout)
-
-router.get('/superUser', asyncCatch(async(req,res)=>{
-    const user = req.user
-    console.log(user)
-    const userDB = await User.findById(user._id)
-    userDB.status = 'superuser'
-    await userDB.save()
-    res.send(userDB)
-}))
 
 module.exports = router

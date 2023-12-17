@@ -51,22 +51,13 @@ app.set('views', path.join(__dirname,'views'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname, 'public')))
 
-// const store = new MongoDBStore({
-//     url: dbURL,
-//     secret: 'this_is_the_secret!youKnow',
-//     touchAfter: 24*60*60,
-// })
-
-// store.on("error", (e)=>{
-//     console.log(e)
-// })
 const session_config = {
     store: MongoDBStore.create({
         mongoUrl : dbURL,
-        secret: 'this_is_the_secret!youKnow',
+        secret: process.env.MONGO_STORE_SECRET,
         touchAfter: 24*60*60,
     }),
-    secret: 'this_is_the_secret',
+    secret: process.env.SESSION_SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{
@@ -75,6 +66,7 @@ const session_config = {
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
 }
+
 app.use(session(session_config))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -92,20 +84,16 @@ app.use((req,res,next)=>{
     }
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
+    res.locals.warning = req.flash('warning');
     res.locals.currUser = req.user
     next();
 })
 
 app.get('/', (req,res)=>{
-    res.redirect('/campground')
+    const img = 'https://res.cloudinary.com/dhvn3raqc/image/upload/v1702540462/homeimg_ze9wht.jpg'
+    res.render('./home', {img})
 })
 
-app.get('/fakeuser' , async(req,res)=>{
-    const user = new User({email:"colt@gmail.com" , username:'colt'})
-    const newUser = await User.register(user , "passwordku")
-    res.send(newUser)
-
-})
 
 // Campground routes
 app.use('/campground' , campground_routes);

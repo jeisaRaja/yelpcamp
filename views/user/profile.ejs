@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+  <h3 class="text-center mb-3">Your Listings</h3>
+  <div class="yourListing">
+    <% for(let camp of userCamps) { %>
+      <div class="listingCard">
+          <a class="imgContainerCover" href="/campground/<%=camp._id%>">
+            <img src="<%=camp.images[0].m_thumbnail%>" class="img-fluid w-100" style="object-fit: cover;" alt="">
+          </a>
+          <p><%= camp.title  %></p>
+      </div>
+    <% } %>
+  </div>
+</div>

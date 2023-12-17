@@ -7,27 +7,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/campground">Home</a>
+            <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
 
-          <% if(!currUser){ %> 
+          <% if(!currUser){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/campground">Campgrounds</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/register">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
-          <% }else{ %> 
-            <li class="nav-item">
-              <a class="nav-link" href="/campground/new">New Camp</a>
-            </li>
+          <% }else{ %>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+            <a class="nav-link" href="/campground">Campgrounds</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger link" href="/logout">Logout</a>
           </li>
           <% } %> 
         </ul>
-        <form class="d-flex" action="/campground">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" method="GET" action="/campground">
+          <input name="s" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

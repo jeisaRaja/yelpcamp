@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-image: url('<%= img %>'); /* Set the image URL dynamically */
+      background-size: cover;
+      /* Other background properties can be added here */
+    }
+    #fade {
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    #title {
+      color: white;
+    }
+    button {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      width: 150px;
+      border-radius: 20px;
+      border: none;
+    }
+    button:hover{
+      cursor: pointer;
+    }
+    a:hover{
+      cursor: pointer;
+    }
+    .logout{
+      display: flex;
+      justify-content: center;
+    }
+    .redbutton{
+      background-color: rgba(255, 0, 0, 0.451);
+    }
+</style>
+</head>
+<body>
+  <div id="fade">
+    <h1 id="title">YelpCamp</h1>
+    <div style="display: flex; flex-direction:column; gap: 10px;">
+      <div class="p-2 bd-highlight"><a href="/campground"><button>Browse Camps</button></a></div>
+      <% if(currUser){ %>
+        <div class="p-2 bd-highlight"><a href="/campground/new"><button class="mt-5">Add New Camp</button></a></div>
+        <div class="p-2 bd-highlight logout text-danger"><a href="/logout"><button class="redbutton">Logout</button></a></div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
+
+
