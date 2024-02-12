@@ -47,6 +47,15 @@ Start the server
   npm run start
 ```
 
+## Dependencies
+
+- [Cloudinary](https://www.npmjs.com/package/cloudinary)
+- [ejs](https://www.npmjs.com/package/ejs)
+- [express](https://www.npmjs.com/package/express)
+- [joi](https://www.npmjs.com/package/joi)
+- [mongoose](https://www.npmjs.com/package/mongoose)
+- [passport](https://www.npmjs.com/package/passport)
+
 
 ## Environment Variables
 
