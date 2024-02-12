@@ -6,10 +6,12 @@ A simple clone of yelp for camping enthusiast. Find and share your new favorite 
 
 ## Features
 
+- User authentication and authorization
 - Add campground and it's details (image, price, location)
-- User authentication
-- User authorization
-- Review campground
+- Search camp by keyword
+- Add review to the camp
+- Edit camp listing's details
+
 
 
 ## Tech Stack
@@ -54,6 +56,10 @@ To run this project, you will need to add the following environment variables to
 `CLOUDINARY_KEY`
 `CLOUDINARY_SECRET`
 `DB_URL`
+`SESSION_SECRET`
+`MONGO_STORE_SECRET`
+`HERE_MAP_APP_ID`
+`HERE_MAP_API_KEY`
 
 
 
